@@ -1,13 +1,29 @@
+
+class Output
+  def messages
+    @messages ||= []
+  end
+  def puts(message)
+    messages << message
+  end
+end
+
+def output
+  @output ||= Output.new
+end
+
+
 Given /^I am not yet playing$/ do
-  Codebreaker::Game.new.start
+
 end
 
 When /^i start a new game$/ do
-  pending # express the regexp above with the code you wish you had
+  game = Codebreaker::Game.new(output)
+  game.start 
 end
 
 Then /^i should see "(.*?)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+  output.messages.should include(arg1)
 end
 
 Given /^the secret code is "(.*?)"$/ do |arg1|
