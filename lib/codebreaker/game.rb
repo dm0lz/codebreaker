@@ -4,6 +4,8 @@ module Codebreaker
       @output = output
     end
     def start 
+    	@output.puts "Welcome to Codebreaker !!!"
+    	
     end
   end
 end
